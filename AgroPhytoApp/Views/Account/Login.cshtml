@@ -1,0 +1,31 @@
+﻿@model AgroPhytoApp.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <div class="card shadow">
+        <div class="card-body">
+            <h2 class="text-center mb-4 text-success">Autentificare</h2>
+
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Parolă</label>
+                    <input asp-for="Password" class="form-control" />
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,183 @@
+﻿@model AgroPhytoApp.Models.Produs
+
+@{
+    ViewData["Title"] = "Adaugă Programare";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3>
+                Programare Medicală
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Nume Pacient
+                        </label>
+
+                        <input asp-for="Nume"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Telefon
+                        </label>
+
+                        <input asp-for="Telefon"
+                               class="form-control" />
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            CNP
+                        </label>
+
+                        <input asp-for="CNP"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Adresă
+                        </label>
+
+                        <input asp-for="Adresa"
+                               class="form-control" />
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Observații Medicale
+                    </label>
+
+                    <textarea asp-for="Descriere"
+                              class="form-control">
+                    </textarea>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Data Programării
+                        </label>
+
+                        <input asp-for="DataProgramare"
+                               type="date"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Ora Programării
+                        </label>
+
+                        <select asp-for="OraProgramare"
+                                class="form-select">
+
+                            <option>08:00</option>
+                            <option>09:00</option>
+                            <option>10:00</option>
+                            <option>11:00</option>
+                            <option>12:00</option>
+                            <option>13:00</option>
+                            <option>14:00</option>
+                            <option>15:00</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Specializare
+                        </label>
+
+                        <select asp-for="Categorie"
+                                class="form-select">
+
+                            <option>Cardiologie</option>
+                            <option>Dermatologie</option>
+                            <option>Pediatrie</option>
+                            <option>Neurologie</option>
+                            <option>Ortopedie</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Taxă Consultație
+                        </label>
+
+                        <input asp-for="Pret"
+                               class="form-control" />
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Imagine Programare
+                    </label>
+
+                    <input asp-for="ImagineUrl"
+                           class="form-control" />
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary w-100">
+
+                    Salvează Programarea
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

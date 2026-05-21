@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Autentificare";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow border-0 px-4 py-5">
+                <h3 class="text-center text-success fw-bold mb-4">Login</h3>
+
+                @* MODIFICARE: Trimitem datele către AuthController/Login folosind POST *@
+                <form asp-controller="Auth" asp-action="Login" method="post">
+                    <div class="mb-3">
+                        <label class="form-label text-secondary">Adresă Email</label>
+                        @* MODIFICARE: Am adăugat name="email" *@
+                        <input type="email" name="email" class="form-control" placeholder="nume@exemplu.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-secondary">Parolă</label>
+                        @* MODIFICARE: Am adăugat name="password" *@
+                        <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 shadow-sm py-2">Intră în cont</button>
+                </form>
+
+                <div class="text-center mt-4">
+                    <small class="text-muted">Nu ai cont? <a href="/Auth/Register" class="text-success fw-bold text-decoration-none">Creează unul aici</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

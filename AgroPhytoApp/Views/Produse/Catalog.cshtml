@@ -1,0 +1,83 @@
+﻿@model List<AgroPhytoApp.Models.Produs>
+
+@{
+    ViewData["Title"] = "Programări Medicale";
+}
+
+<div class="container mt-4">
+
+    <h2 class="text-primary fw-bold mb-4">
+        Programări Medicale
+    </h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        @foreach (var produs in Model)
+        {
+            <div class="col">
+
+                <div class="card border-0 shadow-lg h-100">
+
+                    <img src="@(string.IsNullOrEmpty(produs.ImagineUrl)
+                                                 ? "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800"
+                                                 : produs.ImagineUrl)"
+                         class="card-img-top"
+                         style="height:220px; object-fit:cover;" />
+
+                    <div class="card-body">
+
+                        <h4 class="fw-bold text-primary">
+                            @produs.Nume
+                        </h4>
+
+                        <p class="text-muted">
+                            @produs.Descriere
+                        </p>
+
+                        <p>
+                            <strong>Specializare:</strong>
+                            @produs.Categorie
+                        </p>
+
+                        <p class="text-success fw-bold">
+                            Taxă Consultație:
+                            @produs.Pret RON
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+
+                        <a href="/Produse/Detalii/@produs.Id"
+                           class="btn btn-outline-primary w-100">
+                            Detalii
+                        </a>
+
+                        <a href="/Produse/Cos?numeProdus=@produs.Nume"
+                           class="btn btn-success w-100 mt-2">
+                            Programează
+                        </a>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="/Produse/Edit/@produs.Id"
+                               class="btn btn-warning w-100 mt-2">
+                                Edit
+                            </a>
+
+                            <a href="/Produse/Delete/@produs.Id"
+                               class="btn btn-danger w-100 mt-2">
+                                Șterge
+                            </a>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

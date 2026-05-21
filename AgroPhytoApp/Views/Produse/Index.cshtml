@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Acasă";
+}
+
+<div class="container mt-4">
+
+    <div class="p-5 mb-5 text-white rounded-4 shadow"
+         style="
+            background-image: linear-gradient(rgba(0,0,0,0.5),
+            rgba(0,0,0,0.5)),
+            url('https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=1400');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+         ">
+
+        <div class="text-center mt-5">
+
+            <h1 class="display-3 fw-bold">
+                Clinică Medicală Modernă
+            </h1>
+
+            <p class="lead mt-4 fs-2">
+                Programări rapide, medici specializați și istoric medical complet.
+            </p>
+
+            <a href="/Produse/Catalog"
+               class="btn btn-primary btn-lg mt-4 px-5 py-3">
+                Vezi Programările
+            </a>
+
+        </div>
+    </div>
+
+    <h2 class="text-center text-primary fw-bold mb-5">
+        Serviciile Noastre
+    </h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <a href="/Produse/Catalog"
+               class="text-decoration-none text-dark">
+
+                <div class="card border-0 shadow-lg h-100 text-center p-4 service-card">
+
+                    <div class="display-1 text-primary">
+                        🩺
+                    </div>
+
+                    <h3 class="mt-3">
+                        Consultații
+                    </h3>
+
+                    <p class="text-muted">
+                        Consultații medicale realizate de specialiști cu experiență.
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <a href="/Produse/Retete"
+               class="text-decoration-none text-dark">
+
+                <div class="card border-0 shadow-lg h-100 text-center p-4 service-card">
+
+                    <div class="display-1 text-success">
+                        💊
+                    </div>
+
+                    <h3 class="mt-3">
+                        Rețete și Tratament
+                    </h3>
+
+                    <p class="text-muted">
+                        Gestionarea rapidă a rețetelor și tratamentelor medicale.
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <a href="/Produse/Echipamente"
+               class="text-decoration-none text-dark">
+
+                <div class="card border-0 shadow-lg h-100 text-center p-4 service-card">
+
+                    <div class="display-1 text-danger">
+                        🏥
+                    </div>
+
+                    <h3 class="mt-3">
+                        Echipamente Moderne
+                    </h3>
+
+                    <p class="text-muted">
+                        Echipamente medicale moderne pentru investigații precise.
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .service-card {
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+        .service-card:hover {
+            transform: scale(1.03);
+        }
+
+</style>

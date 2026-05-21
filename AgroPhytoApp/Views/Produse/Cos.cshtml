@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Programare Medicală";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-primary text-white">
+
+            <h2>
+                Confirmare Programare Medicală
+            </h2>
+
+        </div>
+
+        <div class="card-body">
+
+            <h4 class="text-success mb-4">
+                Programarea a fost selectată cu succes.
+            </h4>
+
+            <p>
+                <strong>Pacient:</strong>
+                @ViewBag.ProdusSelectat
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                Programare în așteptare
+            </p>
+
+            <p>
+                <strong>Data estimată:</strong>
+                @DateTime.Now.AddDays(2).ToShortDateString()
+            </p>
+
+            <p>
+                <strong>Cabinet:</strong>
+                Cabinet consultații generale
+            </p>
+
+            <p>
+                <strong>Medic:</strong>
+                Dr. Andrei Popescu
+            </p>
+
+            <hr />
+
+            <a href="/Produse/Catalog"
+               class="btn btn-primary">
+
+                Înapoi la Programări
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

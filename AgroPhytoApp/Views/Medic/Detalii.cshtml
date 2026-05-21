@@ -1,0 +1,50 @@
+﻿@model AgroPhytoApp.Models.Medic
+
+@{
+    ViewData["Title"] = "Detalii Medic";
+}
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-5">
+
+            <img src="@Model.ImagineUrl"
+                 class="img-fluid rounded shadow-lg" />
+
+        </div>
+
+        <div class="col-md-7">
+
+            <h1 class="text-primary fw-bold">
+                @Model.Nume
+            </h1>
+
+            <hr />
+
+            <h3 class="text-success">
+                @Model.Specializare
+            </h3>
+
+            <p class="mt-4">
+                @Model.Descriere
+            </p>
+
+            <p>
+                <strong>Experiență:</strong>
+                @Model.Experienta ani
+            </p>
+
+            <a href="/Medic"
+               class="btn btn-primary mt-4">
+
+                Înapoi la Medici
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

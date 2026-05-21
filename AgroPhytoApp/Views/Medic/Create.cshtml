@@ -1,0 +1,82 @@
+﻿@model AgroPhytoApp.Models.Medic
+
+@{
+    ViewData["Title"] = "Adaugă Medic";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>
+                Adaugă Medic
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+
+                <div class="mb-3">
+
+                    <label>Nume</label>
+
+                    <input asp-for="Nume"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Specializare</label>
+
+                    <input asp-for="Specializare"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Descriere</label>
+
+                    <textarea asp-for="Descriere"
+                              class="form-control">
+                    </textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Imagine URL</label>
+
+                    <input asp-for="ImagineUrl"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Experiență</label>
+
+                    <input asp-for="Experienta"
+                           class="form-control" />
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-success w-100">
+
+                    Salvează
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

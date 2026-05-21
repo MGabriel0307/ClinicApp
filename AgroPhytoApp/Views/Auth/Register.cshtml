@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Creează Cont Nou";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow border-0 px-4 py-5">
+                <h3 class="text-center text-success fw-bold mb-4">Înregistrare</h3>
+                <form action="/Auth/Login" method="get">
+                    <div class="mb-3">
+                        <label class="form-label text-secondary">Nume Complet</label>
+                        <input type="text" class="form-control" placeholder="Ion Popescu" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-secondary">Adresă Email</label>
+                        <input type="email" class="form-control" placeholder="nume@exemplu.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label text-secondary">Parolă Nouă</label>
+                        <input type="password" class="form-control" placeholder="minim 6 caractere" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 shadow-sm py-2">Creează Cont</button>
+                </form>
+                <div class="text-center mt-4">
+                    <small class="text-muted">Ai deja cont? <a href="/Auth/Login" class="text-success fw-bold text-decoration-none">Autentifică-te aici</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
