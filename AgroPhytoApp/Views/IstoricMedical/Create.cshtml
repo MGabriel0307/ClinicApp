@@ -1,0 +1,85 @@
+﻿@model AgroPhytoApp.Models.IstoricMedical
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+                Adaugă Istoric Medical
+            </h2>
+
+            <form method="post">
+
+                <div class="mb-3">
+
+                    <label>
+                        Nume Pacient
+                    </label>
+
+                    <input asp-for="NumePacient"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Diagnostic
+                    </label>
+
+                    <input asp-for="Diagnostic"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Rețetă
+                    </label>
+
+                    <textarea asp-for="Reteta"
+                              class="form-control">
+                    </textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Observații
+                    </label>
+
+                    <textarea asp-for="Observatii"
+                              class="form-control">
+                    </textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Data Consultației
+                    </label>
+
+                    <input asp-for="DataConsultatie"
+                           class="form-control" />
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary w-100">
+
+                    Salvează
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

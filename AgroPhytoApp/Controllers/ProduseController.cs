@@ -1,127 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using AgroPhytoApp.Services;
 using AgroPhytoApp.Models;
-using System.Linq;
 
 namespace AgroPhytoApp.Controllers
 {
     public class ProduseController : Controller
     {
-        private readonly ProdusService _service;
+        private readonly AppDbContext _context;
 
-        public ProduseController(ProdusService service)
+        public ProduseController(AppDbContext context)
         {
-            _service = service;
+            _context = context;
         }
 
-        // HOME
+        // LISTA
         public IActionResult Index()
         {
-            return View();
-        }
-
-        // PROGRAMARI
-        public IActionResult Catalog()
-        {
-            var produse = _service.GetAllProduse();
+            var produse = _context.Produse.ToList();
 
             return View(produse);
         }
 
-        // FILTRARE
-        public IActionResult Categorie(string tip)
+        // DETAILS
+        public IActionResult Details(int id)
         {
-            var produse = _service.GetAllProduse();
-
-            var produseFiltrate = produse
-                .Where(p => p.Categorie == tip)
-                .ToList();
-
-            return View("Catalog", produseFiltrate);
-        }
-
-        // DETALII
-        public IActionResult Detalii(int id)
-        {
-            var produs = _service.GetProdusById(id);
-
-            if (produs == null)
-            {
-                return NotFound();
-            }
+            var produs = _context.Produse.Find(id);
 
             return View(produs);
-        }
-
-        // MEDICI
-        public IActionResult DespreNoi()
-        {
-            return View();
-        }
-
-        // CABINETE
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
-        // RETETE
-        public IActionResult Retete()
-        {
-            return View();
-        }
-
-        // ECHIPAMENTE
-        public IActionResult Echipamente()
-        {
-            return View();
-        }
-
-        // PROGRAMARE CONSULTATIE
-        public IActionResult Cos(string numeProdus)
-        {
-            ViewBag.ProdusSelectat = numeProdus;
-
-            return View();
-        }
-
-        // ISTORIC
-        public IActionResult Istoric(string numeProdus)
-        {
-            ViewBag.ProdusCumparat = numeProdus;
-
-            return View();
-        }
-
-        // TEST
-        public IActionResult Test()
-        {
-            var produse = _service.GetAllProduse();
-
-            return Content("Programări: " + produse.Count);
-        }
-
-        // TEST CREATE
-        public IActionResult AddTest()
-        {
-            var produs = new Produs
-            {
-                Nume = "Ion Popescu",
-                Descriere = "Consultație cardiologie",
-                Pret = 250,
-                Categorie = "Cardiologie",
-                ImagineUrl = "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=800",
-                Telefon = "0722222222",
-                CNP = "1234567890123",
-                Adresa = "Craiova",
-                DataProgramare = DateTime.Now,
-                OraProgramare = "10:00"
-            };
-
-            _service.AddProdus(produs);
-
-            return Content("Programare adăugată!");
         }
 
         // CREATE GET
@@ -136,32 +41,23 @@ namespace AgroPhytoApp.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create(Produs produs)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _service.AddProdus(produs);
+                _context.Produse.Add(produs);
 
-                return RedirectToAction("Catalog");
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                return Content(ex.Message);
-            }
-        }
 
-        // DELETE
-        [Authorize(Roles = "Admin")]
-        public IActionResult Delete(int id)
-        {
-            _service.DeleteProdus(id);
-
-            return RedirectToAction("Catalog");
+            return View(produs);
         }
 
         // EDIT GET
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
-            var produs = _service.GetProdusById(id);
+            var produs = _context.Produse.Find(id);
 
             return View(produs);
         }
@@ -171,16 +67,49 @@ namespace AgroPhytoApp.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(Produs produs)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _service.UpdateProdus(produs);
+                _context.Produse.Update(produs);
 
-                return RedirectToAction("Catalog");
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                return Content(ex.Message);
-            }
+
+            return View(produs);
+        }
+
+        // DELETE
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            var produs = _context.Produse.Find(id);
+
+            _context.Produse.Remove(produs);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        // DASHBOARD
+        public IActionResult Dashboard()
+        {
+            var produse = _context.Produse.ToList();
+
+            ViewBag.TotalProgramari = produse.Count;
+
+            ViewBag.TotalPacienti = produse.Count;
+
+            ViewBag.ProgramariConfirmate =
+                produse.Count(p => p.StatusProgramare == "Confirmata");
+
+            // FORMULA PROFULUI
+
+            ViewBag.VenitTotal =
+                produse.Sum(p => p.TaxaConsultatie + (p.NrAnalize * 75));
+
+            return View();
         }
     }
 }

@@ -13,8 +13,21 @@ namespace AgroPhytoApp.Models
         [Required]
         public string Descriere { get; set; }
 
+        // FORMULA PROFESORULUI
+
         [Required]
-        public double Pret { get; set; }
+        public double TaxaConsultatie { get; set; }
+
+        [Required]
+        public int NrAnalize { get; set; }
+
+        public double Pret
+        {
+            get
+            {
+                return TaxaConsultatie + (NrAnalize * 75);
+            }
+        }
 
         [Required]
         public string Categorie { get; set; }
@@ -34,5 +47,9 @@ namespace AgroPhytoApp.Models
         public DateTime? DataProgramare { get; set; }
 
         public string? OraProgramare { get; set; }
+
+        // STATUS
+
+        public string? StatusProgramare { get; set; }
     }
 }

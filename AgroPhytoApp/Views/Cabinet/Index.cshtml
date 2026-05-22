@@ -1,0 +1,75 @@
+﻿@model List<AgroPhytoApp.Models.Cabinet>
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-5">
+        Cabinete Medicale
+    </h1>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create"
+           class="btn btn-primary mb-4">
+
+            Adaugă Cabinet
+
+        </a>
+    }
+
+    <div class="row">
+
+        @foreach (var cabinet in Model)
+        {
+            <div class="col-md-4 mb-4">
+
+                <div class="card shadow-lg border-0">
+
+                    <img src="@cabinet.ImagineUrl"
+                         class="card-img-top"
+                         style="height:250px; object-fit:cover;" />
+
+                    <div class="card-body">
+
+                        <h4>
+                            Cabinet @cabinet.Numar
+                        </h4>
+
+                        <p>
+                            <strong>Specializare:</strong>
+                            @cabinet.Specializare
+                        </p>
+
+                        <p>
+                            <strong>Dotări:</strong>
+                            @cabinet.Dotari
+                        </p>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit"
+                               asp-route-id="@cabinet.Id"
+                               class="btn btn-warning w-100 mb-2">
+
+                                Edit
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@cabinet.Id"
+                               class="btn btn-danger w-100">
+
+                                Delete
+
+                            </a>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

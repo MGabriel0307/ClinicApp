@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Dashboard Clinică";
+}
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-5">
+        Dashboard Clinică Medicală
+    </h1>
+
+    <div class="row text-center">
+
+        <div class="col-md-3 mb-4">
+            <div class="card bg-primary text-white shadow-lg">
+                <div class="card-body">
+                    <h3>Programări Totale</h3>
+                    <h1>@ViewBag.TotalProgramari</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card bg-success text-white shadow-lg">
+                <div class="card-body">
+                    <h3>Pacienți</h3>
+                    <h1>@ViewBag.TotalPacienti</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card bg-warning text-dark shadow-lg">
+                <div class="card-body">
+                    <h3>Confirmate</h3>
+                    <h1>@ViewBag.ProgramariConfirmate</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card bg-danger text-white shadow-lg">
+                <div class="card-body">
+                    <h3>Venit Total</h3>
+
+                    <h1>
+                        @ViewBag.VenitTotal RON
+                    </h1>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow-lg mt-5">
+
+        <div class="card-body">
+
+            <h2>
+                Funcționalități Sistem
+            </h2>
+
+            <table class="table table-bordered mt-4">
+
+                <tr>
+                    <td>Gestionare programări</td>
+                </tr>
+
+                <tr>
+                    <td>Gestionare pacienți</td>
+                </tr>
+
+                <tr>
+                    <td>Gestionare medici</td>
+                </tr>
+
+                <tr>
+                    <td>Istoric medical</td>
+                </tr>
+
+                <tr>
+                    <td>Dashboard administrativ</td>
+                </tr>
+
+                <tr>
+                    <td>Statistici clinică</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

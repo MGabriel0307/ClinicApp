@@ -4,6 +4,7 @@ using AgroPhytoApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgroPhytoApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260521112846_AddStatusProgramare")]
+    partial class AddStatusProgramare
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,7 +93,7 @@ namespace AgroPhytoApp.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("AgroPhytoApp.Models.Cabinet", b =>
+            modelBuilder.Entity("AgroPhytoApp.Models.Categorie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -98,27 +101,16 @@ namespace AgroPhytoApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Dotari")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagineUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Numar")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Specializare")
+                    b.Property<string>("Nume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cabinete");
+                    b.ToTable("Categorii");
                 });
 
-            modelBuilder.Entity("AgroPhytoApp.Models.IstoricMedical", b =>
+            modelBuilder.Entity("AgroPhytoApp.Models.Comanda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -126,27 +118,33 @@ namespace AgroPhytoApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("DataConsultatie")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Diagnostic")
+                    b.Property<string>("NumeClient")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NumePacient")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Total")
+                        .HasColumnType("float");
 
-                    b.Property<string>("Observatii")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
 
-                    b.Property<string>("Reteta")
+                    b.ToTable("Comenzi");
+                });
+
+            modelBuilder.Entity("AgroPhytoApp.Models.Furnizor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("IstoricMedicale");
+                    b.ToTable("Furnizori");
                 });
 
             modelBuilder.Entity("AgroPhytoApp.Models.Medic", b =>
@@ -208,9 +206,6 @@ namespace AgroPhytoApp.Migrations
                     b.Property<string>("ImagineUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NrAnalize")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -218,11 +213,11 @@ namespace AgroPhytoApp.Migrations
                     b.Property<string>("OraProgramare")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Pret")
+                        .HasColumnType("float");
+
                     b.Property<string>("StatusProgramare")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("TaxaConsultatie")
-                        .HasColumnType("float");
 
                     b.Property<string>("Telefon")
                         .HasColumnType("nvarchar(max)");
@@ -230,6 +225,26 @@ namespace AgroPhytoApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produse");
+                });
+
+            modelBuilder.Entity("AgroPhytoApp.Models.Recenzie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comentariu")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Recenzii");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

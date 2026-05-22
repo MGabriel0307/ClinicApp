@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgroPhytoApp.Models
 {
@@ -8,19 +8,15 @@ namespace AgroPhytoApp.Models
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
+
         }
 
         public DbSet<Produs> Produse { get; set; }
 
-        public DbSet<Categorie> Categorii { get; set; }
+        public DbSet<Cabinet> Cabinete { get; set; }
 
-        public DbSet<Comanda> Comenzi { get; set; }
-
-        public DbSet<Furnizor> Furnizori { get; set; }
-
-        public DbSet<Recenzie> Recenzii { get; set; }
-
-        // MEDICI
         public DbSet<Medic> Medici { get; set; }
+
+        public DbSet<IstoricMedical> IstoricMedicale { get; set; }
     }
 }

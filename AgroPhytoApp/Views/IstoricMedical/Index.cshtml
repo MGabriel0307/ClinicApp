@@ -1,0 +1,81 @@
+﻿@model List<AgroPhytoApp.Models.IstoricMedical>
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-5">
+        Istoric Medical
+    </h1>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create"
+           class="btn btn-primary mb-4">
+
+            Adaugă Istoric Medical
+
+        </a>
+    }
+
+    <div class="row">
+
+        @foreach (var istoric in Model)
+        {
+            <div class="col-md-6 mb-4">
+
+                <div class="card shadow-lg border-0">
+
+                    <div class="card-body">
+
+                        <h4>
+                            @istoric.NumePacient
+                        </h4>
+
+                        <p>
+                            <strong>Diagnostic:</strong>
+                            @istoric.Diagnostic
+                        </p>
+
+                        <p>
+                            <strong>Rețetă:</strong>
+                            @istoric.Reteta
+                        </p>
+
+                        <p>
+                            <strong>Observații:</strong>
+                            @istoric.Observatii
+                        </p>
+
+                        <p>
+                            <strong>Data Consultației:</strong>
+                            @istoric.DataConsultatie
+                        </p>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit"
+                               asp-route-id="@istoric.Id"
+                               class="btn btn-warning w-100 mb-2">
+
+                                Edit
+
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@istoric.Id"
+                               class="btn btn-danger w-100">
+
+                                Delete
+
+                            </a>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

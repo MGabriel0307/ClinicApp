@@ -127,6 +127,23 @@
                     <div class="col-md-6 mb-3">
 
                         <label class="form-label">
+                            Status Programare
+                        </label>
+
+                        <select asp-for="StatusProgramare"
+                                class="form-select">
+
+                            <option>În așteptare</option>
+                            <option>Confirmată</option>
+                            <option>Finalizată</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
                             Specializare
                         </label>
 
@@ -143,6 +160,10 @@
 
                     </div>
 
+                </div>
+
+                <div class="row">
+
                     <div class="col-md-6 mb-3">
 
                         <label class="form-label">
@@ -154,16 +175,16 @@
 
                     </div>
 
-                </div>
+                    <div class="col-md-6 mb-3">
 
-                <div class="mb-3">
+                        <label class="form-label">
+                            Imagine URL
+                        </label>
 
-                    <label class="form-label">
-                        Imagine Programare
-                    </label>
+                        <input asp-for="ImagineUrl"
+                               class="form-control" />
 
-                    <input asp-for="ImagineUrl"
-                           class="form-control" />
+                    </div>
 
                 </div>
 

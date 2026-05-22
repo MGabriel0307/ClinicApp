@@ -4,6 +4,7 @@ using AgroPhytoApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgroPhytoApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260522111338_AddCabinete")]
+    partial class AddCabinete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,37 +121,6 @@ namespace AgroPhytoApp.Migrations
                     b.ToTable("Cabinete");
                 });
 
-            modelBuilder.Entity("AgroPhytoApp.Models.IstoricMedical", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("DataConsultatie")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Diagnostic")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumePacient")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Observatii")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Reteta")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IstoricMedicale");
-                });
-
             modelBuilder.Entity("AgroPhytoApp.Models.Medic", b =>
                 {
                     b.Property<int>("Id")
@@ -208,9 +180,6 @@ namespace AgroPhytoApp.Migrations
                     b.Property<string>("ImagineUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("NrAnalize")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -218,11 +187,11 @@ namespace AgroPhytoApp.Migrations
                     b.Property<string>("OraProgramare")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Pret")
+                        .HasColumnType("float");
+
                     b.Property<string>("StatusProgramare")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("TaxaConsultatie")
-                        .HasColumnType("float");
 
                     b.Property<string>("Telefon")
                         .HasColumnType("nvarchar(max)");

@@ -1,0 +1,75 @@
+﻿@model AgroPhytoApp.Models.Cabinet
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+                Editare Cabinet
+            </h2>
+
+            <form method="post">
+
+                <input asp-for="Id" type="hidden" />
+
+                <div class="mb-3">
+
+                    <label>
+                        Număr Cabinet
+                    </label>
+
+                    <input asp-for="Numar"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Specializare
+                    </label>
+
+                    <input asp-for="Specializare"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Dotări
+                    </label>
+
+                    <textarea asp-for="Dotari"
+                              class="form-control">
+                    </textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Imagine URL
+                    </label>
+
+                    <input asp-for="ImagineUrl"
+                           class="form-control" />
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-warning w-100">
+
+                    Salvează Modificările
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
